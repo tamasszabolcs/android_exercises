@@ -59,9 +59,18 @@ fun main(args: Array<String>) {
     println(days.map { it.first() })
     println(days.map { it + "->" + it.length })
 
-    val mutList: MutableList<String> = mutableListOf("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
-    mutList.remove("n")
-    println(mutList)
+    //7
+    var week = listOf<String>("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
+    week = week.toMutableList()
+
+    week = week.filter{!it.contains('n')}
+    println(week)
+
+    for((it, index) in week.withIndex()){
+        println("Item at $index is $it")
+    }
+    var sort_week = week.sorted();
+    println(sort_week)
 
     //8
     val start = 0
