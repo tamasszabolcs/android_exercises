@@ -1,0 +1,5 @@
+"Hogy vagy?"
+"Jol"
+"Rosszul"
+"Nagyon jol"
+"Nagyon rosszul"
