@@ -1,10 +1,21 @@
 <resources>
     <string name="app_name">Market Place</string>
     <string name="title_login">LOGIN</string>
+    <string name="title_register">REGISTER</string>
+    <string name="hint_username">Username</string>
     <string name="hint_email">Email ID</string>
     <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
     <string name="forgot_password">Forgot Password?</string>
-    <string name="button_login">Login</string>
+    <string name="button_login">Sign In</string>
+    <string name="button_register">Sign Up</string>
     <string name="no_account">Don\'t have an account?</string>
-    <string name="register">REGISTER</string>
+    <string name="account">Already have an account?</string>
+    <string name="register">REGISTER NOW!</string>
+    <string name="login">LOGIN NOW!</string>
+    <string name="username_empty">Please enter your username!</string>
+    <string name="email_empty">Please enter your email ID!</string>
+    <string name="password_empty">Please enter your password!</string>
+    <string name="confirm_password_empty">Please enter your confirm password!</string>
+    <string name="confirm_password_mismatch">Password and confirm password does not match!</string>
 </resources>
