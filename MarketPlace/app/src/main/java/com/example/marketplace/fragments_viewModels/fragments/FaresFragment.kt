@@ -1,4 +1,4 @@
-package com.example.marketplace.activities.ui.notifications
+package com.example.marketplace.fragments_viewModels.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.marketplace.R
-import com.example.marketplace.databinding.FragmentNotificationsBinding
+import com.example.marketplace.databinding.FragmentFaresBinding
+import com.example.marketplace.fragments_viewModels.ViewModels.FareViewModel
 
-class NotificationsFragment : Fragment() {
+class FaresFragment : Fragment() {
 
-    private lateinit var notificationsViewModel: NotificationsViewModel
-    private var _binding: FragmentNotificationsBinding? = null
+    private lateinit var fareViewModel: FareViewModel
+    private var _binding: FragmentFaresBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,14 +25,14 @@ class NotificationsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+        fareViewModel =
+            ViewModelProvider(this).get(FareViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentFaresBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
+        fareViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

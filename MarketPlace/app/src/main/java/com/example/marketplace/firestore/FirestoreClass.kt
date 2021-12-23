@@ -78,6 +78,9 @@ class FirestoreClass: BaseActivity() {
                             activity.userLoggedInSuccess(user)
                         }
                     }
+                    is SettingsActivity ->{
+
+                    }
                 }
             }
     }

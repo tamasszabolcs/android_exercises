@@ -38,7 +38,17 @@
     <string name="profile_updated_success">Your profile was updated successfully!</string>
     <string name="image_uploaded_success">Your image was uploaded successfully!</string>
     <string name="title_activity_dashboard">MainActivity</string>
+    <string name="title_timeline">Timeline</string>
+    <string name="title_market">My Market</string>
+    <string name="title_fares">My Fares</string>
+    <string name="click_back_again">Please click back again to exit!</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="title_settings">Settings</string>
+    <string name="lbl_edit">Edit</string>
+    <string name="lbl_addresses">Addresses</string>
+    <string name="btn_lbl_logout">Logout</string>
 </resources>

@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -12,6 +13,7 @@ import com.example.marketplace.R
 import com.google.android.material.snackbar.Snackbar
 
 open class BaseActivity : AppCompatActivity() {
+    private var doubleBackToExitPressedOnce = false
     private lateinit var mProgressDialog: Dialog
     fun showErrorSnackBar(message:String,errorMessage: Boolean){
         val snackBar = Snackbar.make(findViewById(android.R.id.content),message,Snackbar.LENGTH_LONG)
@@ -54,4 +56,22 @@ open class BaseActivity : AppCompatActivity() {
 //    fun hideProgressDialog(){
 //        mProgressDialog.dismiss()
 //    }
+
+    fun doubleBackToExit(){
+        if(doubleBackToExitPressedOnce){
+            super.onBackPressed()
+            return
+        }
+        this.doubleBackToExitPressedOnce = true
+        Toast.makeText(
+            this,
+            resources.getString(R.string.click_back_again),
+            Toast.LENGTH_SHORT
+        ).show()
+
+        @Suppress("DEPRECATION")
+        Handler().postDelayed({
+            doubleBackToExitPressedOnce = false
+        },1000)
+    }
 }

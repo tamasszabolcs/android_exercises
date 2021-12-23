@@ -1,4 +1,4 @@
-package com.example.marketplace.activities.ui.home
+package com.example.marketplace.fragments_viewModels.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +8,15 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.marketplace.R
-import com.example.marketplace.databinding.FragmentHomeBinding
+import com.example.marketplace.databinding.FragmentMarketBinding
+import com.example.marketplace.fragments_viewModels.ViewModels.MarketViewModel
+//import com.example.marketplace.activities.databinding.FragmentDashboardBinding
 
-class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
-    private var _binding: FragmentHomeBinding? = null
+class MarketFragment : Fragment() {
+
+    private lateinit var marketViewModel: MarketViewModel
+    private var _binding: FragmentMarketBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,14 +27,14 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        marketViewModel =
+            ViewModelProvider(this).get(MarketViewModel::class.java)
 
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentMarketBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        val textView: TextView = binding.textDashboard
+        marketViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
