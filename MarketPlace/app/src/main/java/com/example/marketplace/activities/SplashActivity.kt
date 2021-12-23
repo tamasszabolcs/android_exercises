@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
         val handler = Handler()
         handler.postDelayed({
             // do something after 2000ms
-                            startActivity(Intent(this,LoginActivity::class.java))
+                            startActivity(Intent(this,DashboardActivity::class.java))
                             finish()
         }, 2000)
 

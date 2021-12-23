@@ -14,6 +14,7 @@ import android.widget.TextView
 import com.example.marketplace.R
 import com.example.marketplace.firestore.FirestoreClass
 import com.example.marketplace.retrofit.models.UserModel
+import com.example.marketplace.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
@@ -113,8 +114,18 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         }
     }
     fun userLoggedInSuccess(user:UserModel){
-        //open the Main Screen
-        startActivity(Intent(this,MainActivity::class.java))
-        finish()
+        //ha nincs befejezve a profil
+        if(user.profileCompleted == 0){
+           val intent = Intent(this,ProfileActivity::class.java)
+            //can be loaded as a string
+            intent.putExtra(Constants.extra_user_details,user)
+            startActivity(intent)
+
+        }
+        else{
+            //open the Main Screen
+            startActivity(Intent(this,DashboardActivity::class.java))
+        }
+    finish()
     }
 }

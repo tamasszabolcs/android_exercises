@@ -6,7 +6,9 @@
     <string name="hint_email">Email ID</string>
     <string name="hint_password">Password</string>
     <string name="hint_confirm_password">Confirm Password</string>
-    <string name="hint_forgot_password">Enter your e-mail address and we will send you an e-mail to reset your password! </string>
+    <string name="hint_forgot_password">Enter your e-mail address and we will send you an e-mail to reset your
+        password!
+    </string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="button_login">Sign In</string>
     <string name="button_register">Sign Up</string>
@@ -25,4 +27,18 @@
 
     <string name="please_wait">Please Wait</string>
     <string name="register_success">You are registered successfully!</string>
+
+    <string name="title_profile">PROFILE</string>
+    <string name="et_hint_mobile_number">MOBILE NUMBER</string>
+    <string name="btn_save">SAVE</string>
+    <string name="hintbtnSave">SAVE</string>
+    <string name="read_storage_permission_denied">Permission is denied!</string>
+    <string name="image_selection_failed">Image Selection Failed!</string>
+    <string name="mobile_number_empty">Please enter your mobile number!</string>
+    <string name="profile_updated_success">Your profile was updated successfully!</string>
+    <string name="image_uploaded_success">Your image was uploaded successfully!</string>
+    <string name="title_activity_dashboard">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
