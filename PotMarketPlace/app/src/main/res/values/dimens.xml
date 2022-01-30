@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="splash_title_text_size">35sp</dimen>
+    <dimen name="button_background_radius">10dp</dimen>
+    <dimen name="header_height">50sp</dimen>
+    <dimen name="title_text_size">50sp</dimen>
+    <dimen name="et_text_size">20sp</dimen>
+    <dimen name="et_padding">15sp</dimen>
+    <dimen name="clickable_tv_padding">5dp</dimen>
+    <dimen name="forgot_password_text_size">15sp</dimen>
+    <dimen name="forgot_password_et_text_size">20sp</dimen>
+    <dimen name="button_text_size">20sp</dimen>
+    <dimen name="button_padding">10sp</dimen>
+    <dimen name="tv_text_size">20sp</dimen>
+    <dimen name="tv_no_account">15sp</dimen>
+    <dimen name="tv_register_now">15sp</dimen>
+    <dimen name="tv_login_now">15sp</dimen>
+
+    <dimen name="progress_padding">10dp</dimen>
+    <dimen name="progress_bar_size">50dp</dimen>
+    <dimen name="progress_text_marginStart">20dp</dimen>
+    <dimen name="progress_text_size">10sp</dimen>
+
+    <dimen name="user_image_backround_stroke">5dp</dimen>
+    <dimen name="user_image_backround_corner_radius">10dp</dimen>
+    <dimen name="profile_image_size">150dp</dimen>
+    <dimen name="profile_image_marginTop">50dp</dimen>
+    <dimen name="profile_image_margin">5dp</dimen>
+    <dimen name="profile_button_height">45dp</dimen>
+    <dimen name="profile_button_marginStartEnd">5dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="header_image_height">200dp</dimen>
+    <dimen name="settings_user_image_size">150dp</dimen>
+    <dimen name="settings_user_image_marginTop">-75dp</dimen>
+    <dimen name="settings_user_picture_margin">3dp</dimen>
+    <dimen name="grey_border_stroke_size">1dp</dimen>
+    <dimen name="grey_border_radius">2dp</dimen>
+    <dimen name="settings_edit_label_marginStartEnd">10dp</dimen>
+    <dimen name="settings_edit_label_marginTopBottom">5dp</dimen>
+    <dimen name="settings_edit_label_textSize">15sp</dimen>
+    <dimen name="settings_name_marginTop">30dp</dimen>
+    <dimen name="settings_name_textSize">22sp</dimen>
+    <dimen name="settings_info_marginTop">30dp</dimen>
+    <dimen name="settings_info_textSize">20sp</dimen>
+    <dimen name="settings_address_margin">15dp</dimen>
+    <dimen name="settings_address_padding">15dp</dimen>
+    <dimen name="settings_lbl_addresses_margin">3dp</dimen>
+    <dimen name="settings_lbl_addressess_textSize">18sp</dimen>
+    <dimen name="settings_button_marginStartEnd">50dp</dimen>
+    <dimen name="settings_button_marginTopBottom">15dp</dimen>
+</resources>
