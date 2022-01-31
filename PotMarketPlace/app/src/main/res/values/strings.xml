@@ -6,7 +6,8 @@
     <string name="hint_email">Email ID</string>
     <string name="hint_password">Password</string>
     <string name="hint_confirm_password">Confirm Password</string>
-    <string name="hint_forgot_password">Enter your username and e-mail address and we will send you an e-mail to reset your
+    <string name="hint_forgot_password">Enter your username and e-mail address and we will send you an e-mail to reset
+        your
         password!
     </string>
     <string name="forgot_password">Forgot Password?</string>
@@ -53,4 +54,14 @@
     <string name="btn_lbl_logout">Logout</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hintbtnLogout">Log Out</string>
+    <string name="order_now">Order Now</string>
+    <string name="profile_text">Profile</string>
+    <string name="timeline">Timeline</string>
+    <string name="my_market">My Market</string>
+    <string name="my_fares">My Fares</string>
+    <string name="search">Search</string>
+    <string name="content_description_search">Content Description Search</string>
+    <string name="profile">Filter</string>
+    <string name="content_description_profile">Content description filter</string>
 </resources>

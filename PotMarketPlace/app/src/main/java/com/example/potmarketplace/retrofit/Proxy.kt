@@ -3,6 +3,7 @@ package com.example.marketplace.retrofit
 import com.example.marketplace.retrofit.models.RegisterModel
 import com.example.potmarketplace.retrofit.models.LoginModel
 import com.example.potmarketplace.retrofit.models.ResetModel
+import com.example.potmarketplace.retrofit.models.UpdateProfileModel
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,5 +29,9 @@ object Proxy {
     fun register(registerModel: RegisterModel) = service.register(registerModel).execute().body()
 
     fun reset(resetModel: ResetModel) = service.reset(resetModel).execute().body()
+
+    fun updateProfile(token: String, updateProfileModel: UpdateProfileModel) = service.updateProfile(token, updateProfileModel).execute().body()
+
+    fun getProducts(token: String) = service.getProducts(token,5000).execute().body()
 
 }

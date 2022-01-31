@@ -6,6 +6,7 @@ import com.example.marketplace.retrofit.models.RegisterResponse
 import com.example.potmarketplace.retrofit.models.LoginModel
 import com.example.potmarketplace.retrofit.models.LoginResponse
 import com.example.potmarketplace.retrofit.models.ResetModel
+import com.example.potmarketplace.retrofit.models.UpdateProfileModel
 import io.reactivex.Single
 
 object UserAccessLayer {
@@ -49,6 +50,21 @@ object UserAccessLayer {
                 emitter.onSuccess(resetResponse)
             }
             Log.d("asd", resetResponse.toString())
+        }
+    }
+
+    fun getUpdateProfileObservable(
+        token: String,
+        updateProfileModel: UpdateProfileModel
+    ): Single<RegisterResponse> {
+        val updateResponse = Proxy.updateProfile(token, updateProfileModel)
+        return Single.create { emitter ->
+            if (updateResponse?.code !=200) {
+                emitter.onError(Exception("Hiba"))
+            } else {
+                emitter.onSuccess(updateResponse)
+            }
+            Log.d("asd", updateResponse.toString())
         }
     }
 }

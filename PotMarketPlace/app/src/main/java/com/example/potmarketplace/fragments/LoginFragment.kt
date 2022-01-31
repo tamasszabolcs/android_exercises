@@ -126,9 +126,11 @@ class LoginFragment : Fragment() {
             .subscribe(
                 {
 
-
                     val edit = sharedPref.edit()
                     edit.putString(Constants.TOKEN, it.token).apply()
+                    edit.putString(Constants.EMAIL, it.email).apply()
+                    edit.putString(Constants.PHONENUMBER, it.phoneNumber).apply()
+                    edit.putString(Constants.USERNAME, emailField.text.toString()).apply()
                     val intent = Intent(requireActivity(), MainActivity::class.java)
                     requireActivity().startActivity(intent)
                     requireActivity().finish()

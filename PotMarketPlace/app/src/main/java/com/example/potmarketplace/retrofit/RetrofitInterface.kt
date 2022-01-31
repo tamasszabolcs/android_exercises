@@ -2,14 +2,10 @@ package com.example.marketplace.retrofit
 
 import com.example.marketplace.retrofit.models.RegisterModel
 import com.example.marketplace.retrofit.models.RegisterResponse
-import com.example.potmarketplace.retrofit.models.LoginModel
-import com.example.potmarketplace.retrofit.models.LoginResponse
-import com.example.potmarketplace.retrofit.models.ResetModel
+import com.example.potmarketplace.models.ProductsResult
+import com.example.potmarketplace.retrofit.models.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface RetrofitInterface {
     @POST("user/login")
@@ -20,4 +16,10 @@ interface RetrofitInterface {
 
     @POST("user/reset")
     fun reset(@Body resetModel: ResetModel): Call<RegisterResponse>
+
+    @POST("user/update")
+    fun updateProfile(@Header("token") token: String,@Body updateProfileModel: UpdateProfileModel): Call<RegisterResponse>
+
+    @GET("products")
+    fun getProducts(@Header("token") token: String, @Header ("limit")limit:Int): Call<ProductsResponse<List<ProductsResult>>>
 }
