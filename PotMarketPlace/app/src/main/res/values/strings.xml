@@ -64,4 +64,9 @@
     <string name="content_description_search">Content Description Search</string>
     <string name="profile">Filter</string>
     <string name="content_description_profile">Content description filter</string>
+    <string name="submit">Submit</string>
+    <string name="model_username">Cameron Williamson</string>
+    <string name="model_price">25 RON/l</string>
+    <string name="model_product_name">P{alinka}de prune</string>
+    <string name="model_active_status">Active</string>
 </resources>
