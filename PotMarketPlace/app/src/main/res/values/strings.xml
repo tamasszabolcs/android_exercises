@@ -66,7 +66,21 @@
     <string name="content_description_profile">Content description filter</string>
     <string name="submit">Submit</string>
     <string name="model_username">Cameron Williamson</string>
-    <string name="model_price">25 RON/l</string>
+    <string name="model_price">30 RON/l</string>
     <string name="model_product_name">P{alinka}de prune</string>
     <string name="model_active_status">Active</string>
+    <string name="model_date">30.9.2021</string>
+    <string name="model_description">Palinka din prune alese, facuta cu drag dupa o reteta de familie. S-au folosit cele
+        mai bune si frumoase prune, culese din livezi din Transilvania
+    </string>
+    <string name="total_items">Total items</string>
+    <string name="price_item">Price item</string>
+    <string name="sold_items">Sold items</string>
+    <string name="review">Review</string>
+    <string name="total_item">3 L</string>
+    <string name="total_price_item">50 RON</string>
+    <string name="total_sold_items">30 L</string>
+    <string name="total_review">900 RON</string>
+    <string name="rating">Rating</string>
+    <string name="total_rating">5</string>
 </resources>

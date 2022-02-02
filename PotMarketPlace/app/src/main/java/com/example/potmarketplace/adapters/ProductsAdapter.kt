@@ -11,7 +11,8 @@ import com.example.potmarketplace.R
 import com.example.potmarketplace.models.Product
 
 class ProductsAdapter(
-    var productsList: MutableList<Product>
+    var productsList: MutableList<Product>,
+    private val onItemClickListener: OnItemClickListener
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -35,7 +36,12 @@ class ProductsAdapter(
             productPriceTextView.text = "$pricePerUnit $priceType/$amountType"
             ownerNameTextView.text = userName
         }
-
+        init {
+            itemView.setOnClickListener {
+                val position = layoutPosition
+                onItemClickListener.onItemClick(position)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

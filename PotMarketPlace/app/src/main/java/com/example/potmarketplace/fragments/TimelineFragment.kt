@@ -27,7 +27,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import java.util.*
 
-class TimelineFragment : Fragment() {
+class TimelineFragment : Fragment(), ProductsAdapter.OnItemClickListener {
 
     private lateinit var profileTextView : TextView
     private lateinit var recyclerView : RecyclerView
@@ -40,6 +40,23 @@ class TimelineFragment : Fragment() {
 
     private lateinit var myMarketItem: ClipData.Item
     private lateinit var bottomNavigation: BottomNavigationView
+
+    override fun onItemClick(position: Int) {
+        val fragmentManager = requireActivity().supportFragmentManager
+        val product = currentList[position]
+        val bundle = Bundle()
+        val fragment = DetailsFragment()
+        bundle.putString("title", product.title)
+        bundle.putString("description", product.description)
+        bundle.putString("price_per_unit", product.pricePerUnit)
+        bundle.putString("units", product.units)
+        bundle.putString("is_active", product.isActive.toString())
+        bundle.putString("rating", product.rating.toString())
+        //bundle.putString("amount_type", product.amountType)
+        //bundle.putString("price_type", product.priceType)
+        fragment.arguments = bundle
+        fragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,fragment).addToBackStack(null).commit()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,7 +125,7 @@ class TimelineFragment : Fragment() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    productAdapter = ProductsAdapter(it)
+                    productAdapter = ProductsAdapter(it, this)
                     recyclerView.adapter = productAdapter
                     fullList = it
                     currentList.addAll(it)
