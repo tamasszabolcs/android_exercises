@@ -16,6 +16,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.potmarketplace.R
+import com.example.potmarketplace.adapters.MyProductsAdapter
 import com.example.potmarketplace.adapters.ProductsAdapter
 import com.example.potmarketplace.models.Product
 import com.example.potmarketplace.retrofit.ProductAccessLayer
@@ -25,14 +26,14 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class MyMarketFragment : Fragment(), ProductsAdapter.OnItemClickListener  {
+class MyMarketFragment : Fragment(), MyProductsAdapter.OnItemClickListener  {
 
     private lateinit var profileTextView : TextView
     private lateinit var recyclerView : RecyclerView
     private lateinit var sharedPref: SharedPreferences
     private lateinit var productsDisposable: Disposable
     private lateinit var searchView: SearchView
-    private lateinit var productAdapter: ProductsAdapter
+    private lateinit var productAdapter: MyProductsAdapter
     private var currentList = mutableListOf<Product>()
     private lateinit var fullList: MutableList<Product>
 
@@ -69,7 +70,7 @@ class MyMarketFragment : Fragment(), ProductsAdapter.OnItemClickListener  {
 
         profileTextView = activity!!.findViewById(R.id.profile_textview)
 
-        recyclerView = view.findViewById(R.id.recycler_view)
+        recyclerView = view.findViewById(R.id.recycler_view_mymarket)
 
         searchView = activity!!.findViewById(R.id.search_app_bar)
         searchView.isVisible = true
@@ -101,7 +102,7 @@ class MyMarketFragment : Fragment(), ProductsAdapter.OnItemClickListener  {
                 currentList = fullList.filter {
                     it.title.contains(newText,true)
                 }.toMutableList()
-                productAdapter.productsList = currentList
+                productAdapter.myProductsList = currentList
                 productAdapter.notifyDataSetChanged()
                 return true
             }
@@ -124,11 +125,11 @@ class MyMarketFragment : Fragment(), ProductsAdapter.OnItemClickListener  {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    productAdapter = ProductsAdapter(it.filter {
+                    productAdapter = MyProductsAdapter(it.filter {
                                                                it.ownerName.compareTo(sharedPref.getString(Constants.USERNAME,"")!!) == 0
                     }.toMutableList(), this)
                     recyclerView.adapter = productAdapter
-                    fullList = productAdapter.productsList
+                    fullList = productAdapter.myProductsList
                     currentList.addAll(fullList)
                     recyclerView.layoutManager = LinearLayoutManager(requireContext())
                 },
