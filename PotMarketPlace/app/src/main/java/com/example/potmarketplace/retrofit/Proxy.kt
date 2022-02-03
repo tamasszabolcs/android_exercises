@@ -32,6 +32,10 @@ object Proxy {
 
     fun updateProfile(token: String, updateProfileModel: UpdateProfileModel) = service.updateProfile(token, updateProfileModel).execute().body()
 
-    fun getProducts(token: String) = service.getProducts(token,5000).execute().body()
+    fun getProducts(token: String) = service.getProducts(token,10000).execute().body()
+
+    fun getMyProducts(token: String,filter: String?) = service.getMyProducts(token, 10000).execute().body()
+
+    fun changePassword(token: String, password: String) = service.changePassword(token, password).execute().body()
 
 }

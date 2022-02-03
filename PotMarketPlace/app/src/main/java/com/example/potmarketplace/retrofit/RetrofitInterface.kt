@@ -7,6 +7,7 @@ import com.example.potmarketplace.retrofit.models.*
 import com.example.potmarketplace.utils.Constants
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.logging.Filter
 
 interface RetrofitInterface {
     @POST(Constants.LOGIN)
@@ -23,4 +24,10 @@ interface RetrofitInterface {
 
     @GET(Constants.GET_PRODUCTS)
     fun getProducts(@Header("token") token: String, @Header ("limit")limit:Int): Call<ProductsResponse<List<ProductsResult>>>
+
+    @GET(Constants.GET_PRODUCTS)
+    fun getMyProducts(@Header("token") token: String, @Header ("limit")limit:Int ): Call<ProductsResponse<List<ProductsResult>>>
+
+    @GET("user/reset")
+    fun changePassword(@Header("token") token: String, @Header("new_password")password: String):Call<RegisterResponse>
 }

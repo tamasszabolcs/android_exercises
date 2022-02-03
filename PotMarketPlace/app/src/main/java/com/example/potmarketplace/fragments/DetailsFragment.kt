@@ -5,7 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import com.example.potmarketplace.R
 
 class DetailsFragment : Fragment() {
@@ -18,6 +20,7 @@ class DetailsFragment : Fragment() {
     private lateinit var priceUnitsTextVIew: TextView
     private lateinit var ratingTextVIew: TextView
     private lateinit var isActiveTextVIew: TextView
+    private lateinit var ownerTextVIew: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +34,7 @@ class DetailsFragment : Fragment() {
         priceUnitsTextVIew = view.findViewById(R.id.price_item_circle_text_view)
         ratingTextVIew = view.findViewById(R.id.rating_circle_text_view)
         isActiveTextVIew = view.findViewById(R.id.active_inactive_text_view)
+        ownerTextVIew = view.findViewById(R.id.owner_name_text_view)
 
 
         titleTextVIew.text = arguments!!.getString("title")
@@ -39,6 +43,9 @@ class DetailsFragment : Fragment() {
         priceUnitsTextVIew.text = arguments!!.getString("price_per_unit")
         ratingTextVIew.text = arguments!!.getString("rating")
         isActiveTextVIew.text = arguments!!.getString("is_active")
+        ownerTextVIew.text = arguments!!.getString("owner_name")
+
+        activity?.findViewById<SearchView>(R.id.search_app_bar)?.isVisible = false
 
         return view
     }

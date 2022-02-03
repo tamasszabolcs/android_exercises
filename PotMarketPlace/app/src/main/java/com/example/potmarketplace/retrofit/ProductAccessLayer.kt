@@ -26,4 +26,24 @@ object ProductAccessLayer {
 
         }
     }
+
+    fun getMyProductsObservable(
+        token: String,
+        filter: String?
+    ): Single<MutableList<Product>> {
+        val getMyProductsResponse = Proxy.getMyProducts(token,filter)
+        return Single.create { emitter ->
+            Log.d("asdasd",getMyProductsResponse.toString())
+            if (getMyProductsResponse == null) {
+                emitter.onError(Exception("Hiba"))
+            } else {
+                val productsList = mutableListOf<Product>()
+                getMyProductsResponse.products.forEach{
+                    productsList.add(Product(it.rating,it.amountType,it.priceType,it.productId,it.ownerName,it.isActive,it.pricePerUnit,it.units,it.description,it.title))
+                }
+                emitter.onSuccess(productsList)
+            }
+
+        }
+    }
 }

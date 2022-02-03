@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +16,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.text.isDigitsOnly
-import com.example.marketplace.retrofit.UserAccessLayer
+import com.example.potmarketplace.retrofit.UserAccessLayer
 import com.example.potmarketplace.R
 import com.example.potmarketplace.activities.LoginActivity
 import com.example.potmarketplace.activities.MainActivity
@@ -33,8 +34,10 @@ class ProfileFragment : Fragment() {
 
     private lateinit var saveButton: Button
     private lateinit var logoutButton: Button
+    private lateinit var changePasswordButton: Button
 
     private var disposable: Disposable? = null
+    private var loginDisposable: Disposable? = null
     private lateinit var sharedPref: SharedPreferences
 
     override fun onCreateView(
@@ -50,6 +53,7 @@ class ProfileFragment : Fragment() {
 
         saveButton = view.findViewById(R.id.btn_save_profile)
         logoutButton = view.findViewById(R.id.btn_logout_profile)
+        changePasswordButton = view.findViewById(R.id.btn_reset_password_profile)
 
         emailField.setText(sharedPref.getString(Constants.EMAIL,"No email"))
         userNameField.setText(sharedPref.getString(Constants.USERNAME,"No username"))
@@ -65,6 +69,11 @@ class ProfileFragment : Fragment() {
             val intent = Intent(requireActivity(), LoginActivity::class.java)
             requireActivity().startActivity(intent)
             requireActivity().finish()
+        }
+
+        changePasswordButton.setOnClickListener{
+            val fragmentManager = requireActivity().supportFragmentManager
+            fragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,ForgotPasswordFragment()).commit()
         }
 
         saveButton.isEnabled = false
@@ -104,8 +113,9 @@ class ProfileFragment : Fragment() {
 
                     val edit = sharedPref.edit()
                     edit.putString(Constants.PHONENUMBER, phoneNumberField.text.toString()).apply()
-                    val fragmentManager = requireActivity().supportFragmentManager
-                    fragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,ProfileFragment()).commit()
+
+                    getLoginObserver()
+
                 },
                 {
                     Toast.makeText(requireContext(),it.message, Toast.LENGTH_LONG).show()
@@ -119,8 +129,34 @@ class ProfileFragment : Fragment() {
             if (!disposable!!.isDisposed)
                 disposable!!.dispose()
         }
+        if (loginDisposable != null) {
+            if (!loginDisposable!!.isDisposed)
+                loginDisposable!!.dispose()
+        }
         super.onDestroyView()
     }
+    private fun getLoginObserver(){
+        loginDisposable = UserAccessLayer.getLoginObservable(LoginModel(userNameField.text.toString(), sharedPref.getString(Constants.PASSWORD,"")!!))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
 
+                    val edit = sharedPref.edit()
+                    edit.remove(Constants.TOKEN).apply()
+                    edit.putString(Constants.TOKEN, it.token).apply()
+                    edit.putString(Constants.EMAIL, it.email).apply()
+                    edit.putString(Constants.PHONENUMBER, it.phoneNumber).apply()
+                    edit.putString(Constants.USERNAME, emailField.text.toString()).apply()
+                    val fragmentManager = requireActivity().supportFragmentManager
+                    fragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,ProfileFragment()).commit()
+                },
+                {
+                    Toast.makeText(requireContext(),it.message,Toast.LENGTH_LONG).show()
+
+                }
+            )
+
+    }
 
 }

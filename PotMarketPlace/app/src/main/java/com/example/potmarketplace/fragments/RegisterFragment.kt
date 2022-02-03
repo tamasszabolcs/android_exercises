@@ -1,6 +1,5 @@
 package com.example.potmarketplace.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,10 +11,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.marketplace.retrofit.UserAccessLayer
+import com.example.potmarketplace.retrofit.UserAccessLayer
 import com.example.marketplace.retrofit.models.RegisterModel
 import com.example.potmarketplace.R
-import com.example.potmarketplace.activities.MainActivity
 import com.example.potmarketplace.retrofit.models.LoginModel
 import com.example.potmarketplace.utils.Constants
 import io.reactivex.android.schedulers.AndroidSchedulers

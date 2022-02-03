@@ -2,30 +2,26 @@ package com.example.potmarketplace.fragments
 
 import android.content.ClipData
 import android.content.Context
-import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.view.menu.MenuView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.marketplace.retrofit.UserAccessLayer
 import com.example.potmarketplace.R
-import com.example.potmarketplace.activities.MainActivity
 import com.example.potmarketplace.adapters.ProductsAdapter
 import com.example.potmarketplace.models.Product
 import com.example.potmarketplace.retrofit.ProductAccessLayer
-import com.example.potmarketplace.retrofit.models.LoginModel
 import com.example.potmarketplace.utils.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.util.*
 
 class TimelineFragment : Fragment(), ProductsAdapter.OnItemClickListener {
 
@@ -41,19 +37,19 @@ class TimelineFragment : Fragment(), ProductsAdapter.OnItemClickListener {
     private lateinit var myMarketItem: ClipData.Item
     private lateinit var bottomNavigation: BottomNavigationView
 
+
     override fun onItemClick(position: Int) {
         val fragmentManager = requireActivity().supportFragmentManager
         val product = currentList[position]
         val bundle = Bundle()
         val fragment = DetailsFragment()
         bundle.putString("title", product.title)
+        bundle.putString("owner_name", product.ownerName)
         bundle.putString("description", product.description)
         bundle.putString("price_per_unit", product.pricePerUnit)
         bundle.putString("units", product.units)
         bundle.putString("is_active", product.isActive.toString())
         bundle.putString("rating", product.rating.toString())
-        //bundle.putString("amount_type", product.amountType)
-        //bundle.putString("price_type", product.priceType)
         fragment.arguments = bundle
         fragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,fragment).addToBackStack(null).commit()
     }
@@ -70,13 +66,19 @@ class TimelineFragment : Fragment(), ProductsAdapter.OnItemClickListener {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_timeline, container, false)
 
-        profileTextView = view.findViewById(R.id.profile_textview)
+        Log.d("token",sharedPref.getString(Constants.TOKEN,"")!!)
+
+        profileTextView = activity!!.findViewById(R.id.profile_textview)
 
         recyclerView = view.findViewById(R.id.recycler_view)
 
-        searchView = view.findViewById(R.id.search_app_bar)
+        searchView = activity!!.findViewById(R.id.search_app_bar)
+        searchView.isVisible = true
 
-        bottomNavigation = view.findViewById(R.id.bottom_navigation)
+        bottomNavigation = activity!!.findViewById(R.id.bottom_navigation)
+        bottomNavigation.isVisible = true
+
+
 
 
         profileTextView.setOnClickListener {
@@ -89,9 +91,6 @@ class TimelineFragment : Fragment(), ProductsAdapter.OnItemClickListener {
         getProductsObserver()
 
         updateList()
-
-
-
 
         return view
     }

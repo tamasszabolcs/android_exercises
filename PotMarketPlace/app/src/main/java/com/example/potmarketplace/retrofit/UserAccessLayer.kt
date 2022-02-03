@@ -1,12 +1,10 @@
-package com.example.marketplace.retrofit
+package com.example.potmarketplace.retrofit
 
 import android.util.Log
+import com.example.marketplace.retrofit.Proxy
 import com.example.marketplace.retrofit.models.RegisterModel
 import com.example.marketplace.retrofit.models.RegisterResponse
-import com.example.potmarketplace.retrofit.models.LoginModel
-import com.example.potmarketplace.retrofit.models.LoginResponse
-import com.example.potmarketplace.retrofit.models.ResetModel
-import com.example.potmarketplace.retrofit.models.UpdateProfileModel
+import com.example.potmarketplace.retrofit.models.*
 import io.reactivex.Single
 
 object UserAccessLayer {
@@ -65,6 +63,21 @@ object UserAccessLayer {
                 emitter.onSuccess(updateResponse)
             }
             Log.d("asd", updateResponse.toString())
+        }
+    }
+
+    fun getChangePasswordObservable(
+        token: String,
+        password: String
+    ): Single<RegisterResponse> {
+        val changeResponse = Proxy.changePassword(token, password)
+        return Single.create { emitter ->
+            if (changeResponse?.code !=200) {
+                emitter.onError(Exception("Hiba"))
+            } else {
+                emitter.onSuccess(changeResponse)
+            }
+            Log.d("asd",changeResponse.toString())
         }
     }
 }

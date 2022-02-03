@@ -83,4 +83,10 @@
     <string name="total_review">900 RON</string>
     <string name="rating">Rating</string>
     <string name="total_rating">5</string>
+    <string name="ongoing_sales">Ongoing sales</string>
+    <string name="ongoing_orders">Ongoing orders</string>
+    <string name="model_amount">Amount: 3L</string>
+    <string name="model_price_fares">Price: 90 Ron</string>
+    <string name="change_password">Change password</string>
+    <string name="new_password">New password</string>
 </resources>

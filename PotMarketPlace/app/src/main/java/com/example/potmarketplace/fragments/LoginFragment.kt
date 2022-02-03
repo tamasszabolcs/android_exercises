@@ -14,7 +14,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.marketplace.retrofit.UserAccessLayer
+import com.example.potmarketplace.retrofit.UserAccessLayer
 import com.example.potmarketplace.activities.MainActivity
 import com.example.potmarketplace.R
 import com.example.potmarketplace.retrofit.models.LoginModel
@@ -80,6 +80,8 @@ class LoginFragment : Fragment() {
         }
     }
 
+
+
     private fun setListenersForTextInputs() {
 
 
@@ -128,6 +130,7 @@ class LoginFragment : Fragment() {
 
                     val edit = sharedPref.edit()
                     edit.putString(Constants.TOKEN, it.token).apply()
+                    edit.putString(Constants.PASSWORD, passwordField.text.toString()).apply()
                     edit.putString(Constants.EMAIL, it.email).apply()
                     edit.putString(Constants.PHONENUMBER, it.phoneNumber).apply()
                     edit.putString(Constants.USERNAME, emailField.text.toString()).apply()

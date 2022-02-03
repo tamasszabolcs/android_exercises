@@ -6,6 +6,7 @@ object Constants {
     val EMAIL = "email"
     val USERNAME = "username"
     val PHONENUMBER = "phonenumber"
+    val PASSWORD = "password"
 
 
     const val REGISTRATION: String ="user/register"
